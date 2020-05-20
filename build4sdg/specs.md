@@ -24,8 +24,8 @@ create a backend for an information website that takes in data from farmers and 
   - [x] A put request can be made to the generated url to reset password
   - [x] The token will expire after 10 minutes
 - Update Farmer info
-  - Authenticated Farmer only
-  - Separate route to update password
+  - [x] Authenticated Farmer only
+  - [x] Separate route to update password
 - Farmer CRUD
   - Admin or DevTeam only
     - admin or the dev team can get, create, update or delete farmers info
@@ -106,5 +106,35 @@ create a backend for an information website that takes in data from farmers and 
 - Error handling middleware
 - Authentication middleware for protecting routes and setting user roles
 - Validation using Mongoose and no external libraries
-- Use async/await (create middleware to clean up controller methods)
+- Use async/await (create middleware to clean up controller meth### Users & Authentication
+
+- Authentication will be done using JWT/cookies
+  - [x] JWT and cookie should expire in 30 days
+- User registration
+  - [x] Register as a "admin/Dev" or "farmer"
+  - [x] Once registered, a token will be sent along with a cookie (token = xxx)
+  - [x] Passwords must be hashed
+- Farmer login
+  - [x] Farmers can login with email and password
+  - [x] Plain text password will compare with stored hashed password
+  - [x] Once logged in, a token will be sent along with a cookie (token = xxx)
+- farmer's logout
+  - [x] Cookie will be sent to set token = none
+- Get farmer's or users info
+  - [x] Route to get the currently logged in farmer (via token)
+- Password reset (lost password)
+  - [x] Farmer can request to reset password
+  - [x] A hashed token will be emailed to the Farmer registered email address
+  - [x] A put request can be made to the generated url to reset password
+  - [x] The token will expire after 10 minutes
+- Update Farmer info
+  - Authenticated Farmer only
+  - Separate route to update password
+- Farmer CRUD
+  - Admin or DevTeam only
+    - admin or the dev team can get, create, update or delete farmers info
+- Users can only be made admin by updating the database field manually
+
+ods)
+
 - Create a database seeder to import and destroy data
