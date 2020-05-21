@@ -11,6 +11,7 @@ dotenv.config({ path: './config/config.env' });
 // require routes
 const auth = require('./routes/auth');
 const users = require('./routes/users');
+const crops = require('./routes/crops');
 
 connectDB();
 
@@ -28,6 +29,7 @@ if (process.env.NODE_ENV === 'development') {
 // mount routes
 app.use('/api/v1/auth', auth);
 app.use('/api/v1/users', users);
+app.use('/api/v1/crops', crops);
 
 app.use(errorHandler);
 
