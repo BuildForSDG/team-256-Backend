@@ -71,6 +71,9 @@ const sendTokenResponse = asyncHandler(async (user, statusCode, res) => {
 // route  Get /api/v1/auth/getme
 // access public
 exports.getMe = asyncHandler(async (req, res, next) => {
+	if (req.user === null) {
+		return next(new ErrorResponse(`you are not currently logged in`));
+	}
 	const user = await User.findById(req.user.id);
 
 	res.status(200).json({
@@ -81,7 +84,7 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 
 // @desc  logout current user
 // route  Get /api/v1/auth/logout
-// access PRIVATE
+// access public
 exports.logout = asyncHandler(async (req, res, next) => {
 	res.cookie('token', 'none', {
 		expires: new Date(Date.now() + 10 * 1000),
